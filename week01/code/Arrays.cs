@@ -1,5 +1,15 @@
 public static class Arrays
 {
+    public static void Main()
+    {
+        double[] results = MultiplesOf(7, 5);
+
+        foreach (double value in results)
+        {
+            Console.WriteLine(value);
+        }
+
+    }
     /// <summary>
     /// This function will produce an array of size 'length' starting with 'number' followed by multiples of 'number'.  For 
     /// example, MultiplesOf(7, 5) will result in: {7, 14, 21, 28, 35}.  Assume that length is a positive
@@ -13,7 +23,20 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // Creates an array with the size of the variable length. The array will store the results
+        double[] resultArray = new double[length];
+
+        // This is a loop that will run length times
+
+        for (int i = 0; i < length; i++)
+        {
+            // The info will be stored in resultArray[i] starting from 0 and the number will be multiplied from i+1
+            //that way it will start from one and not from 0
+
+            resultArray[i] = number * (i + 1);
+        }
+
+        return resultArray; // replace this return statement with your own
     }
 
     /// <summary>
