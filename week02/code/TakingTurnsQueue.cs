@@ -64,4 +64,6 @@ public class TakingTurnsQueue
     }
 }
 
-//after disabling priority queue test I got 4 errors from 7 tests
+//after disabling priority queue test I got 4 errors from 7 tests the error was because it was showing another person instead of Bob
+//after checking PersonQueue I realized the method to add a person to the queue was wrong and used add insteado of insert
+// the issue was solved
