@@ -12,6 +12,10 @@ public class TakingTurnsQueueTests
     // run until the queue is empty
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
     // Defect(s) Found: 
+
+    //after disabling priority queue test I got 4 errors from 7 tests the error was because it was showing another person instead of Bob
+    //after checking PersonQueue I realized the method to add a person to the queue was wrong and used add insteado of insert
+    // the issue was solved
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
         var bob = new Person("Bob", 2);
@@ -171,6 +175,3 @@ public class TakingTurnsQueueTests
     }
 }
 
-//after disabling priority queue test I got 4 errors from 7 tests the error was because it was showing another person instead of Bob
-//after checking PersonQueue I realized the method to add a person to the queue was wrong and used add insteado of insert
-// the issue was solved
