@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 public static class SetsAndMaps
 {
@@ -61,6 +62,14 @@ public static class SetsAndMaps
         {
             var fields = line.Split(",");
             // TODO Problem 2 - ADD YOUR CODE HERE
+            var degree = fields[3];
+
+
+            if (degrees.ContainsKey(degree))
+                degrees[degree] += 1;
+            else
+                degrees[degree] = 1;
+
         }
 
         return degrees;
@@ -85,7 +94,55 @@ public static class SetsAndMaps
     public static bool IsAnagram(string word1, string word2)
     {
         // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+
+        //normalize
+        string NormalizeString(string input)
+        {
+            var result = new List<char>();
+
+            foreach (char c in input)
+            {
+                if (!char.IsWhiteSpace(c))
+                {
+                    result.Add(char.ToLower(c));
+                }
+            }
+
+            return new string(result.ToArray());
+        }
+
+        string normalizedWord1 = NormalizeString(word1);
+        string normalizedWord2 = NormalizeString(word2);
+
+        //Length shoudl be equal, so first we will check the length
+        if (normalizedWord1.Length != normalizedWord2.Length)
+            return false;
+        var frequency = new Dictionary<char, int>();
+
+        foreach (char c in normalizedWord1)
+        {
+            if (frequency.ContainsKey(c))
+            {
+                frequency[c] += 1;
+            }
+            else
+            {
+                frequency[c] = 1;
+            }
+        }
+        foreach (char c in normalizedWord2)
+        {
+            if (!frequency.ContainsKey(c))
+                return false;
+            frequency[c] -= 1;
+
+            if (frequency[c] == 0)
+                frequency.Remove(c);
+        }
+
+
+        return frequency.Count == 0;
+
     }
 
     /// <summary>
