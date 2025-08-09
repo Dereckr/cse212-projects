@@ -40,7 +40,7 @@ public class Node
         // TODO Start Problem 2
         if (value == Data)
             return true;
-        
+
         if (value < Data)
         {
             // Insert to the left
@@ -49,15 +49,14 @@ public class Node
         else
         {
             return Right != null && Right.Contains(value);
-        
+
         }
 
-        return false;
     }
 
     public int GetHeight()
     {
         // TODO Start Problem 4
-        return 0; // Replace this line with the correct return statement(s)
+        return int.Max(Left is null ? 0 : Left.GetHeight(), Right is null ? 0 : Right.GetHeight()) + 1; // Replace this line with the correct return statement(s)
     }
 }
